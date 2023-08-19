@@ -45,7 +45,7 @@ jobs:
           token: ${{ secrets.MY_TOKEN }}
 
       - name: Send Report Slack
-        run: python api/setting/notif_slack.py
+        run: pytest api/setting/notif_slack.py
         env:
           deployment: ${{ steps.deployment.outputs.deployment }}
           CLIENT_SLACK: ${{ secrets.CLIENT_SLACK }}
