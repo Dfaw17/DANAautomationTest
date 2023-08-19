@@ -1,0 +1,9 @@
+Appium-Python-Client
+assertpy
+pytest
+requests
+selenium
+pytest-html
+pyotp
+pytest-xdist
+psutil
