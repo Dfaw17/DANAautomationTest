@@ -8,7 +8,7 @@ berear_token = "Bearer 38cebe5affdc6038017ae850b112f50d15613c3f40d9d2a5d7bfd75f6
 # TEST CASE MANAGEMENT
 api_key = os.environ.get('API_KEY_QASE')
 host_test_management = "https://api.qase.io/v1/result"
-test_run = 10
+test_run = 11
 test_code_project = "TF"
 
 # SLACK NOTIFICATION

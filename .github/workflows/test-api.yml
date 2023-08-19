@@ -3,7 +3,7 @@ name: Run test with cicd
 on: [ push ]
 
 jobs:
-  build_and_run_test:
+  run_api_automation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
