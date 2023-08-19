@@ -1,8 +1,22 @@
+import json
 import requests
-from api.setting.general import *
+
+from api.setting.general import url_netlify, slack_webhook
 
 
-def webhook_slack(color, success, failed, all, success_rate):
+def test_send_report_slack():
+    jsonContent = open("data.json", "r").read()
+    data_json = json.loads(jsonContent)
+
+    test_success = len(data_json.get("success"))
+    test_failed = len(data_json.get("failed"))
+    test_all = test_success + test_failed
+    success_rate = test_success / test_all * 100
+
+    if test_failed > 0:
+        color = "FF1E00"
+    else:
+        color = "2B7A0B"
     sr = round(success_rate, 2)
 
     param = {
@@ -14,7 +28,7 @@ def webhook_slack(color, success, failed, all, success_rate):
                         "type": "header",
                         "text": {
                             "type": "plain_text",
-                            "text": "Test Automation Report",
+                            "text": f"API AUTOMATION",
                             "emoji": True
                         }
                     },
@@ -23,11 +37,11 @@ def webhook_slack(color, success, failed, all, success_rate):
                         "fields": [
                             {
                                 "type": "mrkdwn",
-                                "text": f"*Success Test:*\n {success}"
+                                "text": f"*Success Test:*\n {test_success}"
                             },
                             {
                                 "type": "mrkdwn",
-                                "text": f"*Failed Test:*\n {failed}"
+                                "text": f"*Failed Test:*\n {test_failed}"
                             }
                         ]
                     },
@@ -40,7 +54,7 @@ def webhook_slack(color, success, failed, all, success_rate):
                             },
                             {
                                 "type": "mrkdwn",
-                                "text": f"*Total Test:*\n {all}"
+                                "text": f"*Total Test:*\n {test_all}"
                             }
                         ]
                     },
@@ -57,7 +71,7 @@ def webhook_slack(color, success, failed, all, success_rate):
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": "<https://www.linkedin.com/in/daffa-fawwaz-maulana/|Go to my linkedin>"
+                            "text": f"<{url_netlify}/report.html|Link Report Test>"
                         }
                     }
                 ]
@@ -68,12 +82,4 @@ def webhook_slack(color, success, failed, all, success_rate):
     header = {
         "content-type": "application/x-www-form-urlencoded"
     }
-    requests.post(slack_webhook, json=param, headers=header)
-
-
-def webhook_debug():
-    header = {
-        "content-type": "application/x-www-form-urlencoded"
-    }
-    param = {"text": "Hello faw"}
     requests.post(slack_webhook, json=param, headers=header)

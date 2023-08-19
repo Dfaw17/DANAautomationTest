@@ -17,3 +17,4 @@ slack_title = os.environ.get('TEST')
 url_artifact = os.environ.get('RUNID')
 notif_slack = "ON"
 notif_slack_just_failed = "NO"
+url_netlify = os.environ.get('PYTEST_URL_NETLIFY')

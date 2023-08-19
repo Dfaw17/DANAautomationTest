@@ -45,7 +45,8 @@ jobs:
           token: ${{ secrets.MY_TOKEN }}
 
       - name: Send Report Slack
-        run: python setting/netlify_link.py
+        run: python api/setting/notif_slack.py
         env:
           deployment: ${{ steps.deployment.outputs.deployment }}
           CLIENT_SLACK: ${{ secrets.CLIENT_SLACK }}
+          PYTEST_URL_NETLIFY: ${{ steps.deployment.outputs.deployment }}
