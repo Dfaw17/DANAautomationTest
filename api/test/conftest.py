@@ -1,6 +1,8 @@
 import json
 import pytest
 
+from api.setting.case_management import case_management_push_result
+
 
 def pytest_html_report_title(report):
     report.title = "Report Http Automation"
@@ -25,6 +27,7 @@ def hook(request):
     yield
     # AFTER TEST
     test_result = request.session.testsfailed - get_error
+    marker = request.node.get_closest_marker("TestManagement")
 
     if test_result == 0:
         with open('data.json', 'r') as file:
@@ -32,12 +35,16 @@ def hook(request):
         data['success'].append(1)
         with open('data.json', 'w') as file:
             json.dump(data, file, indent=4)
+
+        case_management_push_result(str(marker.args[0]), "passed")
     else:
         with open('data.json', 'r') as file:
             data = json.load(file)
         data['failed'].append(1)
         with open('data.json', 'w') as file:
             json.dump(data, file, indent=4)
+
+        case_management_push_result(str(marker.args[0]), "failed")
 
 
 @pytest.fixture(scope='session', autouse=True)
