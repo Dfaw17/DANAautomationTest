@@ -21,7 +21,7 @@ jobs:
         env:
           CLIENT_SLACK: ${{ secrets.CLIENT_SLACK }}
           API_KEY_QASE: ${{ secrets.API_KEY_QASE }}
-        run: pytest api test/
+        run: pytest api/test/
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
