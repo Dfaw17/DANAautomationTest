@@ -19,24 +19,16 @@ def test():
     gender = "male"
     status = "active"
     hit_create_user = create_user(random_name, gender, random_email, status)
-    user_id = hit_create_user.json().get("id")
+    user_id = "11223344"
 
     req = update_user(user_id, random_name, gender, status)
+
     # VERIFY
     verify_status_code = req.status_code
     verify_latency = req.elapsed.microseconds
-    verify_id = req.json().get("id")
-    verify_name = req.json().get("name")
-    verify_email = req.json().get("email")
-    verify_gender = req.json().get("gender")
-    verify_status = req.json().get("status")
+    verify_message = req.json().get("message")
 
     # ASSERT
-    assert_that(verify_status_code).is_equal_to(200)
+    assert_that(verify_status_code).is_equal_to(404)
     assert_that(verify_latency).is_less_than(max_latency)
-    validate_json_schema(instance=req.json(), schema=update_user_normal)
-    assert_that(verify_id).is_not_none()
-    assert_that(verify_name).is_equal_to(random_name)
-    assert_that(verify_email).is_equal_to(random_email)
-    assert_that(verify_gender).is_equal_to(gender)
-    assert_that(verify_status).is_equal_to(status)
+    assert_that(verify_message).is_equal_to("Resource not found")

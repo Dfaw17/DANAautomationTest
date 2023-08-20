@@ -7,7 +7,7 @@ from jsonschema import validate as validate_json_schema
 
 
 @pytest.mark.TestManagement(20)
-def test_create_user_normal():
+def test():
 
     # REQUEST
     fake = Faker()

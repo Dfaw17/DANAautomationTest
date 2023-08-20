@@ -7,7 +7,7 @@ from jsonschema import validate as validate_json_schema
 
 
 @pytest.mark.TestManagement(22)
-def test_get_list_user_normal():
+def test():
 
     # REQUEST
     random_index = random.randint(0, 9)
