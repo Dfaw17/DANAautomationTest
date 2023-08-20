@@ -6,7 +6,7 @@ from api.json_schema.schema_response_gorest import *
 from jsonschema import validate as validate_json_schema
 
 
-@pytest.mark.TestManagement(23)
+@pytest.mark.TestManagement(32)
 def test():
 
     # REQUEST
