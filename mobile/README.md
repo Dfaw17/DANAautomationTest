@@ -2,6 +2,8 @@
 
 this tools to help test mobile automation with python
 
+link video : https://www.youtube.com/watch?v=NYPSpJOi0YQ&ab_channel=DaffaFawwazMaulana
+
 ## Install all library
 *location : root*
 ```python

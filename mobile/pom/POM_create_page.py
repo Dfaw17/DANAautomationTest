@@ -14,3 +14,7 @@ CREATE_btn_submit = {
     "ANDROID": [By.ID, 'com.example.android.architecture.blueprints.todomvp.mock:id/fab_edit_task_done'],
     "IOS": ["", ""]
 }
+CREATE_page = {
+    "ANDROID": [By.XPATH, '//*[@text="New TO-DO"]'],
+    "IOS": ["", ""]
+}

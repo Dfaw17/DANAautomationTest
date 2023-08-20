@@ -2,6 +2,8 @@
 
 this is tiny framework for api automation test, has integrated with slack for notification, test management, netlify, and github action
 
+link video : https://www.youtube.com/watch?v=0uoAjY958D8&ab_channel=DaffaFawwazMaulana
+
 
 ## Install Library
 ```
